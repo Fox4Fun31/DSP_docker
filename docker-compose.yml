@@ -1,0 +1,65 @@
+services:
+  dsp:
+    image: dsp_hosting
+    build:
+      context: .
+    container_name: dsp_nebula_server
+
+    ports:
+      - "8469:8469/tcp"
+
+    environment:
+      # ---- Steam (user must own DSP) ----
+      STEAM_USER: "steamname"
+      STEAM_PASS: "steampw"
+      STEAM_APP_ID: "1366540"
+
+      # ---- Debug (optional) ----
+      WINEDEBUG: "-all"
+      # WINEDEBUG: "+seh,+error,+warn"
+
+      # ---- Mods (defaults exist in start.sh, but explicitly set here) ----
+      BEPINEX_URL: "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.4/BepInEx_win_x64_5.4.23.4.zip"
+      NEBULA_URL: "https://github.com/NebulaModTeam/nebula/releases/download/v0.9.19/Nebula_0.9.19.zip"
+
+      # ---- Goldberg emulator ----
+      EXTRA_ZIP_URL: "https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/4247811310/artifacts/download"
+      # EXTRA_FORCE: "1"
+
+      # =========================================================
+      # DSP START MODE (choose ONE option!)
+      # =========================================================
+
+      # A) Import a save (host path: /data/import/world.dsv) and auto-load it
+      # SAVE_IMPORT: "world.dsv"
+      # SAVE_IMPORT_LOAD: "1"
+      # SAVE_IMPORT_FORCE: "1"
+
+      # B) Load a specific save directly (no import):
+      # DSP_LOAD: "world"
+
+      # C) Load the latest save:
+      # DSP_LOAD_LATEST: "1"
+
+      # D) Start a new game (peace mode):
+      # DSP_NEWGAME_SEED: "123456"
+      # DSP_NEWGAME_STARCOUNT: "64"
+      # DSP_NEWGAME_RESOURCE_MULT: "1.0"
+
+      # E) Start a new game using Nebula config:
+      DSP_NEWGAME_CFG: "1"
+
+      # F) Start a new game with vanilla defaults:
+      # DSP_NEWGAME_DEFAULT: "1"
+
+      # Optional: set UPS (5–240)
+      # DSP_UPS: "60"
+
+      # Optional: force Steam update on every start
+      # FORCE_UPDATE: "1"
+
+    volumes:
+      # Everything is persistent
+      - ./data:/data
+
+    restart: unless-stopped
