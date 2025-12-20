@@ -47,3 +47,4 @@ services:
 ```bash
 docker logs -f dsp_nebula_server
 ```
+Follow the container logs in real time to see the SteamCMD login process and verify whether authentication and game installation succeed or fail.
