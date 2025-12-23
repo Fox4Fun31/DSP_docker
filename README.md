@@ -1,5 +1,5 @@
 # DSP_docker
-A Docker image for a DSP multiplayer server
+A Docker image for a headless DSP multiplayer server with wine
 
 ## Note about the first start (one-time restart)
 On some systems the server **may not come up on the very first boot**.  
