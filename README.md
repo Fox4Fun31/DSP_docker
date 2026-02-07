@@ -39,7 +39,7 @@ services:
 
       # ---- Mods (defaults exist in start.sh, but explicitly set here) ----
       BEPINEX_URL: "https://github.com/BepInEx/BepInEx/releases/download/v5.4.23.4/BepInEx_win_x64_5.4.23.4.zip"
-      NEBULA_URL: "https://github.com/NebulaModTeam/nebula/releases/download/v0.9.19/Nebula_0.9.19.zip"
+      NEBULA_URL: "https://github.com/NebulaModTeam/nebula/releases/download/v0.9.20/Nebula_0.9.20.zip"
 
       # ---- Goldberg emulator ----
       EXTRA_ZIP_URL: "https://gitlab.com/Mr_Goldberg/goldberg_emulator/-/jobs/4247811310/artifacts/download"
@@ -83,8 +83,6 @@ services:
 
     restart: unless-stopped
 
-
-    restart: unless-stopped
 ```
 ```bash
 docker logs -f dsp_nebula_server
