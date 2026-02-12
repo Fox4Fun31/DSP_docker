@@ -74,8 +74,11 @@ services:
       # Optional: set UPS (5–240)
       # DSP_UPS: "60"
 
-      # Optional: force Steam update on every start
+      # Optional: force SteamCMD update on every start
       # FORCE_UPDATE: "1"
+
+      # Optional: force reinstall of Nebula on every start (even if already installed)
+      # NEBULA_FORCE: "1"
 
     volumes:
       # Everything is persistent
